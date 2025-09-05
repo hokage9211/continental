@@ -105,7 +105,7 @@ exports.togglePayment = async (req, res) => {
 
         const clientTime = parseInt(req.headers['x-request-timestamp'], 10);
 const requestAge = Date.now() - clientTime;
-        console.log("Request age is :",requestAge)
+       // console.log("Request age is :",requestAge)
 
    if (requestAge > 4000) {
     console.log("inside toggle function request expired")
