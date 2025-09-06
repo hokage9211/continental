@@ -4,8 +4,8 @@ const mongoose = require('mongoose');
 const path = require('path');
 const app = express();
 const cors=require("cors")
-// app.use(cors())
-app.use(cors({ origin: "*" }));
+app.use(cors())
+// app.use(cors({ origin: "*" }));
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -54,3 +54,4 @@ app.listen(PORT, "0.0.0.0", () => console.log(`Server running on port ${PORT}`))
 //         setTimeout(() => (toast.style.display = "none"), 3000);
 
 //       }
+
