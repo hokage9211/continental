@@ -32,6 +32,15 @@ app.get('/api/health', (req, res) => {
   res.status(200).send('OKkk running');
 });
 
+setInterval(async () => {
+  try {
+    await fetch("https://todoworkertasks-current.onrender.com/api/health");
+    console.log("Pinged App todo");
+  } catch (err) {
+    console.error("Failed to ping App todo:", err.message);
+  }
+}, 10 * 60 * 1000); // every 10 minutes
+
 
 app.get('/', (req, res) => {
     res.redirect('/admin.html');
@@ -54,4 +63,5 @@ app.listen(PORT, "0.0.0.0", () => console.log(`Server running on port ${PORT}`))
 //         setTimeout(() => (toast.style.display = "none"), 3000);
 
 //       }
+
 
