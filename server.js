@@ -4,7 +4,9 @@ const mongoose = require('mongoose');
 const path = require('path');
 const app = express();
 const cors=require("cors")
-app.use(cors())
+// app.use(cors())
+app.use(cors({ origin: "*" }));
+
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 // billerCode
@@ -50,4 +52,5 @@ app.listen(PORT, "0.0.0.0", () => console.log(`Server running on port ${PORT}`))
 //         toast.textContent = message;
 //         toast.style.display = "block";
 //         setTimeout(() => (toast.style.display = "none"), 3000);
+
 //       }
