@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config()
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
@@ -37,17 +37,16 @@ setInterval(async () => {
     await fetch("https://todoworkertasks-current.onrender.com/api/health");
     console.log("Pinged App todo");
   } catch (err) {
+       console.error("Failed to ping App toDo:", err.message);
       const nodemailer = require('nodemailer');
-
-const transporterr = nodemailer.createTransport({
+      const transporterr = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: process.env.EMAIL_FROM,
         pass: process.env.EMAIL_PASSWORD
     }
 });
-
-async function sendSalesReportEmaill(subject, html) {
+      async function sendSalesReportEmaill(subject, html) {
     const mailOptions = {
         from: process.env.EMAIL_FROM,
         to: process.env.EMAIL_TO,
@@ -60,17 +59,18 @@ async function sendSalesReportEmaill(subject, html) {
 async function archiveTodayBillsAndSendReportt() {
     try{
 
-    await sendSalesReportEmaill({message:"ToDo App Stopped Working"}, "html");
+    await sendSalesReportEmaill({message:"didnt rang"}, "html");
     
     console.log('Cron job completed: Bills archived and email sent.');
         
     }catch(err){
         console.log(err)
     }
-    
-    console.error("Failed to ping App todo:", err.message);
-  }
-      archiveTodayBillsAndSendReportt();
+ 
+}
+      archiveTodayBillsAndSendReportt()
+
+
 }, 10 * 60 * 1000); // every 10 minutes
 
 
@@ -95,6 +95,7 @@ app.listen(PORT, "0.0.0.0", () => console.log(`Server running on port ${PORT}`))
 //         setTimeout(() => (toast.style.display = "none"), 3000);
 
 //       }
+
 
 
 
