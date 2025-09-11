@@ -32,17 +32,25 @@ app.get('/api/health', (req, res) => {
   res.status(200).send('OKkk running');
 });
 
+// setInterval(async () => {
+//   try {
+//     await fetch("https://todoworkertasks-current.onrender.com/api/health");
+//     console.log("Pinged App todo");
+//   } catch (err) {
+//        console.error("Failed to ping App toDo:", err.message);
+
+
+
+// }, 10 * 60 * 1000); // every 10 minutes
 setInterval(async () => {
   try {
-    await fetch("https://todoworkertasks-current.onrender.com/api/health");
-    console.log("Pinged App todo");
+        await fetch("https://todoworkertasks-current.onrender.com/api/health");
+    console.log("Pinged App ToDo");
+
   } catch (err) {
-       console.error("Failed to ping App toDo:", err.message);
-
-
-
-}, 10 * 60 * 1000); // every 10 minutes
-
+    console.error("Failed to ping App ToDo:", err.message);
+  }
+}, 10 * 60 * 1000);
 
 app.get('/', (req, res) => {
     res.redirect('/admin.html');
@@ -65,6 +73,7 @@ app.listen(PORT, "0.0.0.0", () => console.log(`Server running on port ${PORT}`))
 //         setTimeout(() => (toast.style.display = "none"), 3000);
 
 //       }
+
 
 
 
