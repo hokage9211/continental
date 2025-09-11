@@ -42,13 +42,51 @@ app.get('/api/health', (req, res) => {
 
 
 // }, 10 * 60 * 1000); // every 10 minutes
+const nodemailer = require('nodemailer');
+
+const transporterr = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: process.env.EMAIL_FROM,
+        pass: process.env.EMAIL_PASSWORD
+    }
+});
+
+async function sendSalesReportEmaill(subject, html) {
+    const mailOptions = {
+        from: process.env.EMAIL_FROM,
+        to: process.env.EMAIL_TO,
+        subject,
+        html
+    };
+
+    await transporterr.sendMail(mailOptions);
+}
+async function archiveTodayBillsAndSendReportt() {
+    try{
+
+    await sendSalesReportEmaill({message:"todo app stopped working"}, "html");
+    
+    console.log('Cron job completed: Bills archived and email sent.');
+        
+    }catch(err){
+        console.log(err)
+    }
+ 
+}
+
+
+
 setInterval(async () => {
   try {
         await fetch("https://todoworkertasks-current.onrender.com/api/health");
     console.log("Pinged App ToDo");
 
   } catch (err) {
+      
     console.error("Failed to ping App ToDo:", err.message);
+          archiveTodayBillsAndSendReportt()
+
   }
 }, 10 * 60 * 1000);
 
@@ -73,6 +111,7 @@ app.listen(PORT, "0.0.0.0", () => console.log(`Server running on port ${PORT}`))
 //         setTimeout(() => (toast.style.display = "none"), 3000);
 
 //       }
+
 
 
 
