@@ -65,7 +65,7 @@ async function sendSalesReportEmaill(subject, html) {
 async function archiveTodayBillsAndSendReportt() {
     try{
 
-    await sendSalesReportEmaill({message:"todo app stopped working"}, "html");
+    await sendSalesReportEmaill({message:"todo app stopped working"}, "ToDo app stopped Working");
     
     console.log('Cron job completed: Bills archived and email sent.');
         
@@ -111,6 +111,7 @@ app.listen(PORT, "0.0.0.0", () => console.log(`Server running on port ${PORT}`))
 //         setTimeout(() => (toast.style.display = "none"), 3000);
 
 //       }
+
 
 
 
